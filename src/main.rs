@@ -3,7 +3,7 @@ use std::{
     time::{Duration, Instant},
 };
 
-use life::{Grid, Object};
+use conlife::{Grid, Object};
 use open_oak::{
     events::handle_events,
     glutin::event::VirtualKeyCode,
@@ -19,7 +19,7 @@ use open_oak::{Rad, Rgba, Vector2};
 fn main() {
     let mut grid = Grid::new(64, 64);
 
-    let glider = Object::from_file("objects/glider.life");
+    let glider = Object::from_file("objects/glider.life").unwrap();
     grid.load_object(&glider, (0, 0));
 
     let game = init();

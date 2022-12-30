@@ -186,6 +186,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3d7b894f5411737b7867f4827955924d7c254fc9f4d91a6aad6b097804b1018b"
 
 [[package]]
+name = "conlife"
+version = "0.1.2"
+
+[[package]]
 name = "core-foundation"
 version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -772,14 +776,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "life"
-version = "0.1.0"
-dependencies = [
- "image",
- "open-oak",
-]
-
-[[package]]
 name = "lock_api"
 version = "0.4.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1069,7 +1065,7 @@ dependencies = [
 name = "open-oak-game-of-life"
 version = "0.1.0"
 dependencies = [
- "life",
+ "conlife",
  "open-oak",
 ]
 
