@@ -1,1 +1,1 @@
-https://simpleji-images.s3.ap-south-1.amazonaws.com/image/catalog/Hindware-Neom/HINDWARE/Ceramic-Tiles-with-plain-plain-color-single-color-gradient-texture-design-and-Silver-Very-Light-Grey-600x600.PNG
+cell texture: https://simpleji-images.s3.ap-south-1.amazonaws.com/image/catalog/Hindware-Neom/HINDWARE/Ceramic-Tiles-with-plain-plain-color-single-color-gradient-texture-design-and-Silver-Very-Light-Grey-600x600.PNG
