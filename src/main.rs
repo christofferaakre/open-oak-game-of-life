@@ -19,6 +19,8 @@ use open_oak::{Rad, Rgba, Vector2};
 
 use clap::Parser;
 
+use std::path::{Path, PathBuf};
+
 #[derive(Debug, Clone)]
 struct OffsetObject {
     object: Object,
@@ -95,7 +97,11 @@ fn main() {
     Rectangle::init(&mut resource_manager, &display);
 
     let texture_name = String::from("cell");
-    let texture = ResourceManager::load_texture(&display, "textures/cell.png");
+
+    let bytes = include_bytes!("../textures/cell.png");
+
+    // let texture = ResourceManager::load_texture(&display, "textures/cell.png");
+    let texture = ResourceManager::load_texture_from_bytes(&display, bytes);
     resource_manager.add_texture(&texture_name, texture);
 
     const ALIVE_COLOR: Rgba<f32> = Rgba([0.0, 1.0, 0.0, 1.0]);
