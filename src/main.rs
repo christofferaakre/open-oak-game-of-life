@@ -81,9 +81,6 @@ fn main() {
         );
     }
 
-    // let glider = Object::from_file("objects/glider.life").unwrap();
-    // grid.load_object(&glider, (0, 0));
-
     let game = init();
 
     let Game {
@@ -100,7 +97,6 @@ fn main() {
 
     let bytes = include_bytes!("../textures/cell.png");
 
-    // let texture = ResourceManager::load_texture(&display, "textures/cell.png");
     let texture = ResourceManager::load_texture_from_bytes(&display, bytes);
     resource_manager.add_texture(&texture_name, texture);
 
