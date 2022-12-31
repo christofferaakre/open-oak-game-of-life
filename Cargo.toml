@@ -1,5 +1,12 @@
 [package]
 name = "open-oak-game-of-life"
+authors = ["Christoffer Aakre <christoffer.corfield@gmail.com>"]
+license = "AGPL-3.0-only"
+description = "Implementation of Conway's Game of Life using open-oak as the front-end and conlife as the backend"
+repository = "https://github.com/christofferaakre/open-oak-game-of-life"
+keywords = ["life", "game-of-life", "game_of_life", "gol", "game"]
+categories = ["data-structures", "simulation", "games"]
+readme = "README.md"
 version = "0.1.0"
 edition = "2021"
 
