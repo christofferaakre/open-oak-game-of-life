@@ -14,5 +14,5 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.0.32", features = ["derive"] }
-conlife = { path = "../conlife" }
-open-oak = { path = "../open-oak" }
+conlife = { path = "../conlife", version = "0.1" }
+open-oak = { path = "../open-oak", version = "0.1" }
