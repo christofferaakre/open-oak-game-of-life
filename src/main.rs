@@ -52,6 +52,8 @@ impl FromStr for OffsetObject {
 
 #[derive(Parser, Debug)]
 struct Args {
+    #[arg(short, long)]
+    seconds_per_generation: f32,
     #[arg(long)]
     width: u32,
     #[arg(long)]
@@ -117,7 +119,6 @@ fn main() {
         })
         .collect();
 
-    const SECONDS_PER_GENERATION: f32 = 0.1;
     let mut timer = Duration::new(0, 0);
 
     let mut pressed_keys: HashSet<VirtualKeyCode> = HashSet::new();
@@ -132,7 +133,7 @@ fn main() {
         let dt = last_frame.elapsed();
         last_frame += dt;
         timer += dt;
-        if timer.as_secs_f32() > SECONDS_PER_GENERATION {
+        if timer.as_secs_f32() > args.seconds_per_generation {
             timer = Duration::new(0, 0);
             grid.advance();
         }
