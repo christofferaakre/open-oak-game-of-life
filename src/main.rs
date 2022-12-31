@@ -1,5 +1,6 @@
 use std::{
     collections::HashSet,
+    str::FromStr,
     time::{Duration, Instant},
 };
 
@@ -16,11 +17,63 @@ use open_oak::{
 use open_oak::Surface;
 use open_oak::{Rad, Rgba, Vector2};
 
-fn main() {
-    let mut grid = Grid::new(64, 64);
+use clap::Parser;
 
-    let glider = Object::from_file("objects/glider.life").unwrap();
-    grid.load_object(&glider, (0, 0));
+#[derive(Debug, Clone)]
+struct OffsetObject {
+    object: Object,
+    x_offset: usize,
+    y_offset: usize,
+}
+
+impl FromStr for OffsetObject {
+    type Err = std::io::Error;
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let mut words = s.split(",");
+        let filename = words.next().expect("Found no filename to load object");
+        let object = Object::from_file(filename).expect("Failed to load object from file");
+        let x_offset: usize = words
+            .next()
+            .expect("Failed to read x offset")
+            .parse()
+            .expect("Failed to parse x offset to usize");
+        let y_offset: usize = words
+            .next()
+            .expect("Failed to read x offset")
+            .parse()
+            .expect("Failed to parse x offset to usize");
+        Ok(Self {
+            object,
+            x_offset,
+            y_offset,
+        })
+    }
+}
+
+#[derive(Parser, Debug)]
+struct Args {
+    #[arg(long)]
+    width: u32,
+    #[arg(long)]
+    height: u32,
+    #[arg(short, long)]
+    objects: Vec<OffsetObject>,
+}
+
+fn main() {
+    let args = Args::parse();
+
+    let mut grid = Grid::new(args.width, args.height);
+
+    for offset_object in args.objects {
+        grid.load_object(
+            &offset_object.object,
+            (offset_object.x_offset, offset_object.y_offset),
+        );
+    }
+
+    // let glider = Object::from_file("objects/glider.life").unwrap();
+    // grid.load_object(&glider, (0, 0));
 
     let game = init();
 
