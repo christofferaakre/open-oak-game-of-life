@@ -52,12 +52,17 @@ impl FromStr for OffsetObject {
 
 #[derive(Parser, Debug)]
 struct Args {
+    /// Number of seconds to show each generation for
     #[arg(short, long)]
     seconds_per_generation: f32,
+    /// Width of the grid in cells
     #[arg(long)]
     width: u32,
+    /// Height of the grid in cells
     #[arg(long)]
     height: u32,
+    /// Used for loading objects onto the grid. Multiple objects can be loaded by using this flag
+    /// multiple times
     #[arg(short, long)]
     objects: Vec<OffsetObject>,
 }
